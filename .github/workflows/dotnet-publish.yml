@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet publish -c Release
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ${{ secrets.server }}
+        username: ${{ secrets.user }}
+        password: ${{ secrets.password }}
+        local-dir: /home/runner/work/Todo/Todo/Todo.Api/bin/Release/net6.0/publish/
+        server-dir: ./Todo/todo-api.timetask.ru/
+        dangerous-clean-slate: true
