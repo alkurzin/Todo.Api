@@ -57,7 +57,7 @@ namespace Library.Api
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "T0do API",
+                    Title = "Todo API",
                     Description = "ASP.NET Core Web API",
                     Contact = new OpenApiContact
                     {
