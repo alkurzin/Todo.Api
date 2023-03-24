@@ -24,10 +24,9 @@
             Priority = priority;
         }
 
-        public void Update(string userId, string title,
-            string description, long priority)
+        public void Update(string title, string description,
+            long priority)
         {
-            UserId = userId;
             Title = title;
             Description = description;
             Priority = priority;

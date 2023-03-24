@@ -23,9 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Task\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Queries\Tasks\" />
   </ItemGroup>
 
 </Project>

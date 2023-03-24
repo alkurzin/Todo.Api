@@ -10,12 +10,5 @@ namespace Todo.Domain.Task
         public string Description { get; set; }
         public bool IsCompleted { get; set; }
         public long Priority { get; set; }
-        public long Hours { get; set; }
-        public long Minutes { get; set; }
-        [DefaultValue("DD.MM.YYYY")]
-        public string Date { get; set; }
-
-        [DefaultValue("00:00")]
-        public string Time { get; set; }
     }
 }

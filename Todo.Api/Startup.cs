@@ -12,9 +12,10 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
-using TaskManager.Domain.Task.MapperProfiles;
+using Todo.Domain.Task.MapperProfiles;
 using Todo.Domain.User.UserMapperProfiles;
 using Todo.Infrastructure;
+using Todo.Service.Commands.Account;
 using Todo.Service.Commands.Account.Validators;
 using Todo.Service.Infrastructure.Account;
 
@@ -49,13 +50,14 @@ namespace Library.Api
             services.AddMvc();
 
             services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(LoginCommand).GetTypeInfo().Assembly); 
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Task Manager API",
+                    Title = "T0do API",
                     Description = "ASP.NET Core Web API",
                     Contact = new OpenApiContact
                     {
@@ -113,7 +115,7 @@ namespace Library.Api
             });
 
             app.UseCors(
-                options => options.WithOrigins("https://timetask.ru", "http://localhost:3000", "https://admin.timetask.ru").AllowAnyMethod().AllowCredentials().AllowAnyHeader()
+                options => options.WithOrigins("https://todo.timetask.ru", "http://localhost:3000").AllowAnyMethod().AllowCredentials().AllowAnyHeader()
             );
 
             app.UseAuthentication();
