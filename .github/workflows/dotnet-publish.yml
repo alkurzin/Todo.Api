@@ -28,6 +28,6 @@ jobs:
         server: ${{ secrets.server }}
         username: ${{ secrets.user }}
         password: ${{ secrets.password }}
-        local-dir: /home/runner/work/Todo/Todo/Todo.Api/bin/Release/net6.0/publish/
+        local-dir: /home/runner/work/Todo.Api/Todo.Api/Todo.Api/bin/Release/net6.0/publish/
         server-dir: ./Todo/todo-api.timetask.ru/
         dangerous-clean-slate: true
