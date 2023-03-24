@@ -1,3 +1,3 @@
-# TODO API.
+# Todo.Api
 
-[![Deploy](https://github.com/alkurzin/Todo/actions/workflows/dotnet-publish.yml/badge.svg)](https://github.com/alkurzin/Todo/actions/workflows/dotnet-publish.yml)
+[![Deploy](https://github.com/alkurzin/Todo.Api/actions/workflows/dotnet-publish.yml/badge.svg)](https://github.com/alkurzin/Todo.Api/actions/workflows/dotnet-publish.yml)
