@@ -27,8 +27,13 @@ namespace Todo.Service.Queries.Tasks
             _mapper = mapper;
         }
         public async Task<IEnumerable<TaskDto>> Handle(GetTasksQuery command, CancellationToken cancellationToken)
-        {
-            return await _mapper.ProjectTo<TaskDto>(_dbContext.Tasks.Where(t => t.UserId == command.UserId && t.Title.Contains(command.SearchString))).ToListAsync(cancellationToken);
+        {   
+            if(command.SearchString != null && command.SearchString.Length > 0)
+            {
+                return await _mapper.ProjectTo<TaskDto>(_dbContext.Tasks.Where(t => t.UserId == command.UserId && t.Title.Contains(command.SearchString))).ToListAsync(cancellationToken);
+            }
+
+            return await _mapper.ProjectTo<TaskDto>(_dbContext.Tasks.Where(t => t.UserId == command.UserId)).ToListAsync(cancellationToken);
         }
     }
 }
