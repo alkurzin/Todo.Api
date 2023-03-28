@@ -13,6 +13,7 @@ namespace Todo.Service.Queries.Tasks
     public class GetTasksQuery : IRequest<IEnumerable<TaskDto>>
     {
         public string UserId { get; set; }
+        public string SearchString { get; set; }
     }
 
     public class GetTasksQueryHandler : IRequestHandler<GetTasksQuery, IEnumerable<TaskDto>>
@@ -27,7 +28,7 @@ namespace Todo.Service.Queries.Tasks
         }
         public async Task<IEnumerable<TaskDto>> Handle(GetTasksQuery command, CancellationToken cancellationToken)
         {
-            return await _mapper.ProjectTo<TaskDto>(_dbContext.Tasks.Where(t => t.UserId == command.UserId)).ToListAsync(cancellationToken);
+            return await _mapper.ProjectTo<TaskDto>(_dbContext.Tasks.Where(t => t.UserId == command.UserId && t.Title.Contains(command.SearchString))).ToListAsync(cancellationToken);
         }
     }
 }
